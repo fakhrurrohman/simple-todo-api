@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const data = require('../data/todos');
 
-// BUG-1: uses todoList which doesn't exist
 router.get('/', (req, res) => {
   try {
-    res.json(todoList); // should use data.getTodos()
+    const todos = data.getTodos();
+    res.json(todos);
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
   }
